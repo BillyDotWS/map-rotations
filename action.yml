@@ -9,8 +9,9 @@ inputs:
     default: 1
     type: number
 outputs:
-  COMMIT_MSG:
+  changelog:
     description: The commit message generated after rotating the maps.
+    value: ${{ steps.swap_maps.outputs.COMMIT_MSG }}
 runs:
   using: composite
   steps:
@@ -18,6 +19,7 @@ runs:
       uses: actions/checkout@v3
     - name: Ensure map-rotation.sh is executable
       run: chmod +x ./scripts/map-rotation.sh
+      shell: bash
     - name: Run the bash script to rotate maps
       id: swap_maps
       run: ./scripts/map-rotation.sh ${{ inputs.count }}
