@@ -41,6 +41,7 @@ jobs:
         with:
           count: 12
 
+      # for this you need to enable pull requests from actions: https://i.imgur.com/Ciop0Oe.png
       - name: Create a pull request
         uses: peter-evans/create-pull-request@v3
         with:
