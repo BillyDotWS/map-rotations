@@ -13,7 +13,7 @@ This GitHub Action allows you to rotate maps in the active pool for Mineplex Stu
 
 ## Outputs
 
-### `COMMIT_MSG`
+### `changelog`
 
 - **Description**: The commit message generated after rotating the maps.
 - **Type**: `string`
@@ -45,7 +45,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           title: "feature: rotate the current map pool"
-          body: "${{ steps.swap_maps.outputs.COMMIT_MSG }}"
+          body: "${{ steps.swap_maps.outputs.changelog }}"
           base: master
           branch: "update-maps-${{ github.run_id }}"
 ```
