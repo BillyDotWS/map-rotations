@@ -1,22 +1,25 @@
-﻿name: 'Mineplex Studio Map Rotation Action'
-description: 'Rotate maps for Mineplex Studio projects'
-icon: 'shuffle'
-color: 'orange'
-author: 'BillyDotWS'
+﻿---
+name: Mineplex Studio Map Rotation Action
+description: |
+  Rotate a specified number of maps for Mineplex Studio projects.
+author: Billy Robinson
 inputs:
   count:
-    description: 'The number of maps to swap in the active pool.'
+    description: The number of maps to swap in the active pool.
     required: true
     default: 1
     type: number
 outputs:
   COMMIT_MSG:
-    description: 'The commit message generated after rotating the maps.'
+    description: The commit message generated after rotating the maps.
 runs:
-  using: 'composite'
+  using: composite
   steps:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Run the bash script to rotate maps
       id: swap_maps
       run: ./scripts/map-rotation.sh ${{ inputs.count }}
+branding:
+  icon: shuffle
+  color: orange
