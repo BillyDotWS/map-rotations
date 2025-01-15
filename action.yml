@@ -18,6 +18,7 @@ runs:
       uses: actions/checkout@v3
     - name: Ensure map-rotation.sh is executable
       run: chmod +x ./scripts/map-rotation.sh
+      shell: bash
     - name: Run the bash script to rotate maps
       id: swap_maps
       run: ./scripts/map-rotation.sh ${{ inputs.count }}
