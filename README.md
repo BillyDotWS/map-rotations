@@ -26,32 +26,26 @@ name: Mineplex Studio Map Rotation Action
 on:
   schedule:
     - cron: '0 0 * * 0'  # Runs every 2 weeks on Sunday at midnight (UTC)
-  workflow_dispatch:
-    inputs:
-      count:
-        type: number
-        required: true
-        description: Number of maps to swap in the active pool
 
 jobs:
   swap-maps:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Rotate maps
-      id: swap_maps
-      uses: BillyDotWS/map-rotation@v1
-      with:
-        count: ${{ inputs.count }}
+      - name: Rotate maps
+        id: swap_maps
+        uses: BillyDotWS/map-rotation@v1
+        with:
+          count: 12
 
-    - name: Create a pull request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        title: "feature: rotate the current map pool"
-        body: "${{ steps.swap_maps.outputs.COMMIT_MSG }}"
-        base: master
-        branch: "update-maps-${{ github.run_id }}"
+      - name: Create a pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: "feature: rotate the current map pool"
+          body: "${{ steps.swap_maps.outputs.COMMIT_MSG }}"
+          base: master
+          branch: "update-maps-${{ github.run_id }}"
 ```
