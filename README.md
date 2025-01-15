@@ -37,7 +37,7 @@ jobs:
 
       - name: Rotate maps
         id: swap_maps
-        uses: BillyDotWS/map-rotation@1
+        uses: BillyDotWS/map-rotations@1
         with:
           count: 12
 
