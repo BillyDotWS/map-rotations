@@ -1,5 +1,6 @@
 ﻿name: 'Mineplex Studio Map Rotation Action'
-description: "Rotate maps for Mineplex Studio projects"
+description: |
+  Rotate a specified number of maps for Mineplex Studio projects
 icon: 'shuffle'
 color: 'orange'
 author: 'BillyDotWS'
